@@ -1,10 +1,10 @@
 # thrift-hbase-laravel
 
-## 安装|Install
+## Install
     
     composer require honvid/thrift-hbase-laravel
 
-在项目中 `config/app.php` 中添加如下
+Changes to `config/app.php`
     
     'providers' => [
         ...
@@ -15,17 +15,16 @@
         'Thrift' => Honvid\Facades\Thrift::class
     ]
 
-最后在命令后执行
+Run Command to add Config file (config/thrift.php),  Change the Host and Port to the Thrift using Config file.
 
     php artisan vendor:publish --provider="Honvid\Providers\ThriftServiceProvider"
+
     
-在 `config` 目录中会生成 `thrift.php` 文件，修改对应配置即可。
+Uses Example 
     
-## 使用|Use Example 
-    
-    use Thrift;
+    use Honvid\Facades\Thrift;
     
     ...
     
     
-    Thrift::getValue('table1', 'ccolumn1', 'row1');
+    Thrift::getValue('table1', 'column_Family', 'Key/Row Identifier', [<Column indexes to be returned, empty for all>]]);
